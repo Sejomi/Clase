@@ -1,4 +1,6 @@
-package EjemplosClase;
+package Programacion;
+
+import java.text.DecimalFormat;
 
 public class support {
     public static void main(String[] args) {
@@ -10,12 +12,16 @@ public class support {
 
         System.out.println((int)k + "/" + (int)d + "/" + (int)a);
 
-        if (d == 0);
-                d = 1;
+        if (d == 0) {
+            d = 1;
+
+            }
+
+        DecimalFormat f = new DecimalFormat("##.##");
+
 
         double kda = ((k + a) / d);
 
-        System.out.println("KDA = " + kda);
-
+        System.out.println("KDA = " + (f.format(kda)));
     }
 }
