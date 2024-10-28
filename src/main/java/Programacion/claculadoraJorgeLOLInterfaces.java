@@ -3,27 +3,26 @@ package Programacion;
 import javax.swing.*;
 import java.util.Scanner;
 
-public class claculadoraJorgeLOL {
+public class claculadoraJorgeLOLInterfaces {
     public static void main(String[] args) {
 
-        double num1 = 0, num2 = 0;
         Scanner meter = new Scanner(System.in);
+        double num1 = 0, num2 = 0;
         double res1 = 0;
         String operador = "";
 
             // Leer numerico 1
-            System.out.print("pon algún numerico tt :3 --> ");
+
 
             try {
-            num1 = meter.nextDouble();
+                num1 = (double) JOptionPane.showInputDialog(null, "pon algún numerico tt :3", "Calculadora",JOptionPane.INFORMATION_MESSAGE,null,null,null);
             } catch (Exception e) {
-                System.out.println("te dicho un numerico tt >:(");
+                JOptionPane.showMessageDialog(null, "te dicho un numerico tt >:(");
                 System.exit(0);
             }
 
             // Leer operador
-            System.out.print("ahora la operación ttico :3 --> ");
-            operador = meter.next();
+        operador = (String) JOptionPane.showInputDialog(null, "ahora la operación ttico :3", "calculadora", JOptionPane.INFORMATION_MESSAGE, null, null, null);
 
             if (operador.equals("+") || operador.equals("-") || operador.equals("*") || operador.equals("/")) {
                 }

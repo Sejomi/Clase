@@ -4,14 +4,14 @@ import java.util.Scanner;
 
 public class Ej2 {
     public static void main(String[] args) {
-        double res1 = 0;
+        int res1 = 0;
         int mult = 1;
-        double num1 = 0;
+        int num1 = 0;
         int cont = 1;
         Scanner numerete = new Scanner(System.in);
 
         System.out.println("pon un numerete: ");
-        num1 = numerete.nextDouble();
+        num1 = numerete.nextInt();
 
         while (cont <= 10) {
             res1 = num1 * mult;
