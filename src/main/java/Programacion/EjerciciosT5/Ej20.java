@@ -1,5 +1,6 @@
 package Programacion.EjerciciosT5;
 
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class Ej20 {
@@ -11,6 +12,7 @@ public class Ej20 {
         double impB = 0;
         double impN = 0;
         double tax = 0;
+        DecimalFormat f = new DecimalFormat(".##");
 
         System.out.println("Introduzca su nombre: ");
         nombre = leer.next();
@@ -40,6 +42,6 @@ public class Ej20 {
             }
         }
         impN = impB - tax;
-        System.out.println("Por las " + ht + " horas trabajadas, a " + nombre + " le corresponde un salario bruto de " + impB + "€ y un neto de " + impN + "€ tras aplicar " + tax + "€ de impuestos.");
+        System.out.println("Por las " + ht + " horas trabajadas, a " + nombre + " le corresponde un salario bruto de " + f.format(impB) + "€ y un neto de " + f.format(impN) + "€ tras aplicar " + f.format(tax) + "€ de impuestos.");
     }
 }
