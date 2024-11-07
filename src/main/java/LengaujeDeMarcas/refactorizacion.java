@@ -1,10 +1,13 @@
 package LengaujeDeMarcas;
 
 public class refactorizacion {
-    public static void main(String[] args) {
-       final String fran = "HOLITA";
 
-        System.out.println(fran);
+    public static int fran; {
+        int holi = 41;
+    }
+    public static void main(String[] args) {
+        System.out.println();
 
     }
 }
+

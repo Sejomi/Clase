@@ -1,6 +1,5 @@
 package Programacion.EjerciciosT5Extra;
 
-import java.util.Locale;
 import java.util.Scanner;
 
 public class Ej1 {
@@ -10,7 +9,7 @@ public class Ej1 {
         System.out.println("Introudzca un día de la semana: ");
         String dia = leer.next();
 
-        while (!dia.toUpperCase().equals("LUNES") && !dia.toUpperCase().equals("MARTES") && !dia.toUpperCase().equals("MIERCOLES") && !dia.toUpperCase().equals("JUEVES") && !dia.toUpperCase().equals("VIERNES")) {
+        while (!dia.equalsIgnoreCase("lunes") && !dia.equalsIgnoreCase("martes") && !dia.equalsIgnoreCase("miercoles") && !dia.equalsIgnoreCase("jueves") && !dia.equalsIgnoreCase("viernes")) {
             System.out.println("Introduzca un dia válido: ");
             dia = leer.next();
         }
