@@ -21,7 +21,7 @@ public class Ej20 {
         System.out.println("Introduzca la tarifa por hora: ");
         tph = leer.nextDouble();
 
-        if (ht < 35) {
+        if (ht <= 35) {
             impB = ht * tph;
             if (impB > 900) {
                 tax = 0.45 * (impB - 900) + (0.25 * 400);
@@ -32,7 +32,7 @@ public class Ej20 {
             }
 
         } else {
-            impB = 1.5 * (ht * tph);
+            impB = 1.5 * ((ht - 35) * tph) + (35 * tph);
             if (impB > 900) {
                 tax = 0.45 * (impB - 900) + (0.25 * 400);
             } else if (impB > 500) {
