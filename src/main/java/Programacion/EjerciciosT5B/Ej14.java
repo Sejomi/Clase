@@ -9,7 +9,6 @@ public class Ej14 {
         int height = entrada.nextInt();
         int llinea = height * 2 - 1;
 
-        System.out.println(llinea);
         System.out.println("Introduzca el carácter de relleno: ");
         String cr = entrada.next();
         for (int n = 0; n < height - 1; n++) {
