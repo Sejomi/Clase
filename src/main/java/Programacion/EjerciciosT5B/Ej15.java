@@ -1,5 +1,6 @@
 package Programacion.EjerciciosT5B;
 
+import java.sql.Time;
 import java.text.DecimalFormat;
 import java.util.Scanner;
 
@@ -20,7 +21,6 @@ public class Ej15 {
             do {
                 boolean letra = false;
                 entry = (hora.length() == 8 && hora.charAt(2) == ':' && hora.charAt(5) == ':');
-                // || hora.matches("[a-z]")
                 if (entry) {
                     System.out.println("Introduzca una hora (HH:MM:SS): ");
                 } else {
