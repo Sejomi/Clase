@@ -34,6 +34,7 @@ public class Ej15 {
                             if (hora.toLowerCase().charAt(i) == abcd[j]) {
                                 letra = true;
                             }
+
                         }
                     }
                     if (letra) {
