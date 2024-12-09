@@ -34,12 +34,13 @@ public class Ej16 {
         } while (!dia1b);
 
         do {
-            if (!hora1b) {
-                System.out.println("Introduzca una hora (H): ");
-            } else
-                System.out.println("Introduzca una hora valida (H): ");
-            hora1 = sc.nextInt();
-            hora1b = true;
+                if (!hora1b) {
+                    System.out.println("Introduzca una hora (H): ");
+                } else
+                    System.out.println("Introduzca una hora valida (H): ");
+                hora1 = sc.nextInt();
+
+                hora1b = true;
         } while (hora1 > 24);
 
         do {

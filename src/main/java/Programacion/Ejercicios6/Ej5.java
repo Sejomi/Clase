@@ -12,6 +12,6 @@ public class Ej5 {
             nums[i] = entrada.nextInt();
             media += nums[i];
         } media = media / nums.length;
-        System.out.println(media);
+        System.out.println("La media es de " + media);
     }
 }
