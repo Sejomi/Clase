@@ -7,7 +7,7 @@ public class numeros {
         boolean comprobar = false;
         for (int i = 0; i < cosa.length(); i++) {
             for (int j = 0; j < numero.length; j++) {
-                if (cosa.charAt(0) == '-'){
+                if (cosa.charAt(0) == '-') {
                     comprobar = true;
                     break;
                 }
@@ -17,6 +17,8 @@ public class numeros {
                 } else {
                     comprobar = false;
                 }
+            } if (!comprobar) {
+                break;
             }
         }
         return comprobar;
