@@ -5,12 +5,13 @@ import java.util.Arrays;
 public class Ej14 {
     public static void main(String[] args) {
         int yea[] = new int[55];
+        int n = 0;
 
-        for (int i = 1; i <= 10; i++) {
-            for (int j = 0; j < i ; j++) {
-                yea[((i - 1) * i) / 2 + j] = i;
+        for (int i = 0; i <= 10; i++) {
+            for (int j = 1; j <= i; j++) {
+                yea[n] = i;
+                n++;
             }
-        }
-        System.out.println(Arrays.toString(yea));
+        } System.out.println(Arrays.toString(yea));
     }
 }

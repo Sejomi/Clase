@@ -1,8 +1,6 @@
 package Programacion.Ejercicios6;
 
-import Programacion.numeros;
-
-import java.util.Arrays;
+import Programacion.numerosEnteros;
 import java.util.Scanner;
 
 public class Ej17 {
@@ -18,18 +16,19 @@ public class Ej17 {
             do {
                 System.out.println("Introduzca el valor " + (i + 1) + ": ");
                 yea1[i] = sc.next();
-            } while (!numeros.comprobar(yea1[i]));
+            } while (!numerosEnteros.comprobar(yea1[i]));
             yea3[i] = Integer.parseInt(yea1[i]);
         } for (int i = 0; i < 10; i++) {
             do {
                 System.out.println("Introduzca el valor " + (i + 11) + ": ");
                 yea2[i] = sc.next();
-            } while (!numeros.comprobar(yea2[i]));
+            } while (!numerosEnteros.comprobar(yea2[i]));
             yea4[i] = Integer.parseInt(yea2[i]);
         }
         for (int i = 0; i < 10; i++) {
             if (yea3[i] != yea4[i]) {
                 corr = false;
+                break;
             }
         }
 

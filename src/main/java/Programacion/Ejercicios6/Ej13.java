@@ -1,6 +1,6 @@
 package Programacion.Ejercicios6;
 
-import Programacion.numeros;
+import Programacion.numerosEnteros;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -24,7 +24,7 @@ public class Ej13 {
                 System.out.println("Introduzca un valor válido: ");
             } N = sc.next();
             valid1 = false;
-        } while (!numeros.comprobar(N) || N.charAt(0) == '-');
+        } while (!numerosEnteros.comprobar(N) || N.charAt(0) == '-');
         int Nnum = Integer.parseInt(N);
 
         do {
@@ -34,7 +34,7 @@ public class Ej13 {
                 System.out.println("Introduzca un valor válido: ");
             } V = sc.next();
             valid2 = false;
-        } while (!numeros.comprobar(V));
+        } while (!numerosEnteros.comprobar(V));
         int Vnum = Integer.parseInt(V);
 
         do {
@@ -44,7 +44,7 @@ public class Ej13 {
                 System.out.println("Introduzca un valor válido: ");
             } I = sc.next();
             valid3 = false;
-        } while (!numeros.comprobar(I));
+        } while (!numerosEnteros.comprobar(I));
         int Inum = Integer.parseInt(I);
 
         int yea[] =  new int[Nnum];
