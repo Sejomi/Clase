@@ -1,6 +1,8 @@
 package Programacion.Ejercicios6;
 
 import Programacion.numerosEnteros;
+
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Ej17 {
@@ -37,5 +39,7 @@ public class Ej17 {
         } else {
             System.out.println("Los 10 primeros números no son iguales a los 10 siguientes");
         }
+        System.out.println(Arrays.toString(yea3));
+        System.out.println(Arrays.toString(yea4));
     }
 }
