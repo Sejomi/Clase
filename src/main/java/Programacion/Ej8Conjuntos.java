@@ -26,7 +26,7 @@ public class Ej8Conjuntos {
             }
             Scon1 = sc.next();
             val1 = false;
-        } while (!numerosDecimales.comprobar(Scon1) || Scon1.contains("."));
+        } while (!numerosDecimales.comprobar(Scon1) || Scon1.contains(".") || Scon1.charAt(0) == ',' || Scon1.charAt(Scon1.length() - 1) == ',');
 
         do {
             if (val2) {
@@ -36,7 +36,7 @@ public class Ej8Conjuntos {
             }
             Scon2 = sc.next();
             val2 = false;
-        } while (!numerosDecimales.comprobar(Scon2) || Scon2.contains("."));
+        } while (!numerosDecimales.comprobar(Scon2) || Scon2.contains(".") || Scon2.charAt(0) == ',' || Scon2.charAt(Scon2.length() - 1) == ',');
 
         for (int i = 0; i < Scon1.length(); i++) {
             if (Scon1.charAt(i) == ',') {
