@@ -15,6 +15,8 @@ public class Ej5 {
         List<Integer> numero = new ArrayList<>();
         String Snumero = "";
         boolean salir = false;
+        String buscar;
+        String eliminar;
 
         do {
             boolean val1 = true;
@@ -60,8 +62,10 @@ public class Ej5 {
                         val2 = false;
 
                     } while (!diccionario.comprobar(Snombre) || nombre.contains(Snombre));
-                    nombre.add(Snombre);
+                    nombre.add(Snombre.toLowerCase());
+
                     do {
+
                         if (val4) {
                             System.out.println("Introduzca un numero: ");
                         } else if (!val5) {
@@ -70,12 +74,12 @@ public class Ej5 {
                             System.out.println("Introduzca un numero válido: ");
                         }
                         Snumero = sc.next();
-                        if (numero.contains(Integer.parseInt(Snumero))) {
+                        if (numerosEnteros.comprobar(Snumero) && numero.contains(Integer.parseInt(Snumero))) {
                             val5 = false;
                         }
                         val4 = false;
 
-                    } while (!numerosEnteros.comprobar(Snumero) || Snumero.charAt(0) == '-' || Snumero.length() != 9 || numero.contains(Integer.parseInt(Snumero)) || (Snumero.charAt(0) != '9' && Snumero.charAt(0) != '8' && Snumero.charAt(0) != '7'));
+                    } while (!numerosEnteros.comprobar(Snumero) || Snumero.charAt(0) == '-' || Snumero.length() != 9 || numero.contains(Integer.parseInt(Snumero)) || (Snumero.charAt(0) != '9' && Snumero.charAt(0) != '6' && Snumero.charAt(0) != '7'));
                     numero.add(Integer.parseInt(Snumero));
                     break;
 
@@ -85,16 +89,56 @@ public class Ej5 {
                         System.out.println("La agenda está vacía.\n");
                     } else {
                         System.out.println("Contactos: \n");
+                        for (int i = 0; i < nombre.size(); i++) {
+                            System.out.println((i + 1) + ": " + nombre.get(i) + ", " + numero.get(i) + "\n");
+                        }
+                    }
+                    break;
+
+                case "3":
+
+                    if (nombre.isEmpty()) {
+                        System.out.println("La agenda está vacía.\n");
+                    } else {
+                        System.out.println("Introduzca un nombre o número: ");
+                        buscar = sc.next();
+
                         for (String i : nombre) {
-                            for (Integer j : numero) {
-                                System.out.println(nombre.indexOf(i) + 1 + ": " + i + ", " + j + "\n");
+                            if (i.equals(buscar.toLowerCase()) || (numerosEnteros.comprobar(buscar) && numero.get(nombre.indexOf(i)) == (Integer.parseInt(buscar)))) {
+                                System.out.println(nombre.indexOf(i) + 1 + ": " + i + ", " + numero.get(nombre.indexOf(i)) + "\n");
                                 break;
+                            } else {
+                                System.out.println("No se encontró en la agenda.");
                             }
                         }
                     }
                     break;
+
+                case "4":
+
+                    if (nombre.isEmpty()) {
+                        System.out.println("La agenda está vacía.\n");
+                    } else {
+                        System.out.println("Introduzca un nombre o número: ");
+                        eliminar = sc.next();
+
+                        for (int i = 0; i < nombre.size(); i++) {
+                            if (nombre.get(i).equals(eliminar.toLowerCase()) || (numerosEnteros.comprobar(eliminar) && numero.get(i) == (Integer.parseInt(eliminar)))) {
+                                numero.remove(numero.get(i));
+                                nombre.remove(nombre.get(i));
+                                break;
+                            } else {
+                                System.out.println("No se encontró en la agenda.");
+                            }
+                        }
+                    }
+                    break;
+
+                case "5":
+
+                    salir = true;
+                    break;
             }
-            
 
         } while (!salir);
     }
