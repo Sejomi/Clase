@@ -13,10 +13,19 @@ public class Ej2Mapas {
         for (int i = 0; i < frasePartia.length; i++) {
             if (!palabras.containsKey(frasePartia[i])) {
                 palabras.put(frasePartia[i], new ArrayList<>());
-            } else {
-                palabras.get(frasePartia[i]).add(i);
+            }
+            palabras.get(frasePartia[i]).add(i);
+        }
+        for (Map.Entry<String, ArrayList<Integer>> entry : palabras.entrySet()) {
+            System.out.print(entry.getKey() + "= ");
+            for (int i = 0; i < entry.getValue().size(); i++) {
+                if (i == entry.getValue().size() - 1) {
+                    System.out.print(entry.getValue().get(i) + "\n");
+                }
+                else {
+                    System.out.print(entry.getValue().get(i) + ", ");
+                }
             }
         }
-        System.out.println(palabras);
     }
 }
