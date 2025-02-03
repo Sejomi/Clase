@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS</title>
+</head>
+<body>
+<h1>Página de prueba</h1>
+<div>Esto es un div con esta imagen:
+    <img width="100px" height="100px" src="https://cdn.prod.website-files.com/62d84e447b4f9e7263d31e94/637627ca9eebde45ae5f394c_Underwater-Nun.jpeg" />
+</div>
+Aquí hay otra: <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/ddc11bcb-13b8-4867-9db4-803cd2a901f9-profile_image-300x300.png">
+<p>Finalmente, por aquí otra más:
+    <img src="https://areajugones.sport.es/wp-content/uploads/2024/05/smiling-friends-temporada-2-760x420.png.webp">
+</p>
+<script type="text/javascript">
+    let parrafos = document.getElementsByTagName('p');
+    let lastParr = parrafos[parrafos.length - 1];
+    let images =
+        lastParr.getElementsByTagName('img'); alert('Hay '
+        + images.length + ' imágenes.');
+</script>
+</body>
+</html>
++
