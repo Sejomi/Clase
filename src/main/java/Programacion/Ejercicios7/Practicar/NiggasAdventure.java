@@ -1,6 +1,5 @@
 package Programacion.Ejercicios7.Practicar;
 
-import java.security.KeyStore;
 import java.util.*;
 
 public class NiggasAdventure {
@@ -65,15 +64,17 @@ public class NiggasAdventure {
 
         System.out.println("Introduzca un apodo dentro del juego: ");
         jugadores.get(nombre).put("Nombre", sc.nextLine());
+
         String clase = "";
-        System.out.println("Elija una clase:\n\n " +
-                "\u0018[35m1. --> Pícaro" +
-                "2. --> Bardo" +
-                "3. --> Guerrero" +
-                "4. --> Clérigo" +
-                "5. --> Hechicero");
+        System.out.println("Elija una clase:\n\n" +
+                "\u001B[35m1. --> Pícaro\n" +
+                "2. --> Bardo\n" +
+                "3. --> Guerrero\n" +
+                "4. --> Clérigo\n" +
+                "5. --> Hechicero\n");
         boolean val3 = true;
         do {
+            val3 = true;
             switch (sc.nextLine()) {
                 case "1":
                     clase = "Pícaro";
@@ -96,10 +97,10 @@ public class NiggasAdventure {
                     break;
             }
         } while (!val3);
-
         jugadores.get(nombre).put("Clase", clase);
 
         jugadores.get(nombre).put("Atributos", new HashMap<String, Integer>());
+
         jugadores.get(nombre).get("Atributos");
 
         return jugadores;
