@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario</title>
+</head>
+<body>
+<form name="form2" action="" onsubmit="validarFormulario()">
+
+    Login: <input type="text" name="login"/> <br/><br/>
+    Edad: <input type="number" name="edad"/> <br/><br/>
+    Fecha de nacimiento: <input type="number" name="fnacimiento"/> <br/><br/>
+
+    <select name="provincia">
+        <option value="" selected>Seleccionar provincia </option>
+        <option value="Alicante">Alicante</option>
+        <option value="Castellón">Castellón</option>
+        <option value="Valencia">Valencia</option>
+    </select> <br/> <br/>
+    <button type="submit">Enviar</button>
+
+</form>
+
+<script>
+
+    function validarFormulario () {
+        let formulario = document.form2;
+        if (formulario.login.value === "")
+            alert("El campo login no puede estar vacío.")
+        if (formulario.edad.value > 200 || formulario.edad.value < 0)
+            alert("El campo edad tiene que ser un numero entre 0 y 200")
+        if (formulario.fnacimiento.value.length !== 4)
+            alert("El campo fecha de nacimiento tiene que tener 4 digitos")
+        if (formulario.provincia.selectedIndex === 0)
+            alert("Elija una opcion del campo seleccionar provincia")
+    }
+
+</script>
+</body>
+</html>

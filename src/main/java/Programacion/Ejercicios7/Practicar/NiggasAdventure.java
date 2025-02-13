@@ -60,7 +60,7 @@ public class NiggasAdventure {
                 val2 = true;
         } while(nombre.isEmpty() || jugadores.containsKey(nombre.toLowerCase()));
 
-        jugadores.put(nombre, new HashMap<>());
+        jugadores.put(nombre, new HashMap<String, Object>());
 
         System.out.println("Introduzca un apodo dentro del juego: ");
         jugadores.get(nombre).put("Nombre", sc.nextLine());
@@ -100,8 +100,6 @@ public class NiggasAdventure {
         jugadores.get(nombre).put("Clase", clase);
 
         jugadores.get(nombre).put("Atributos", new HashMap<String, Integer>());
-
-        jugadores.get(nombre).get("Atributos");
 
         return jugadores;
     }
