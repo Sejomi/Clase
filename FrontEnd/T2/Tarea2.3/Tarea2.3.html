@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Tarea 2.3</title>
+</head>
+<body>
+    <script>
+
+        let libros = [];
+        let librosCont = 0;
+        let valMenu = false;
+        let input = 0;
+        
+        do {
+            let val1 = false;
+
+            do {
+
+                if(!val1) {
+                    console.log("Hola, bienvenido a nuestra librería. ¿Qué desea hacer?");
+                    val1 = true;
+                } else { console.log("Por favor, ingrese una opción válida."); }
+            
+                console.log("1.- Listar libros");
+                console.log("2.- Añadir libro");
+                console.log("3.- Vender libro");
+                console.log("4.- Actualizar libro");
+                console.log("0.- Finalizar");
+                            
+                input = parseInt(prompt());            
+
+            } while (input !== 0 && input !== 1 && input !== 2 && input !== 3 && input !== 4);
+
+            switch (input) {
+                case 1:
+                    listarLibros();
+                    break;
+                case 2:
+                    añadirLibro();
+                    break;
+                case 3:
+                    venderLibro();
+                    break;
+                case 4:
+                    actualizarLibro();
+                    break;
+                case 0:
+                    console.log("Finalizando programa...");
+                    valMenu = true;
+                    break;
+            }
+
+        } while (!valMenu);
+
+        function listarLibros() {
+            for (let i = 0; i < libros.length; i++) {
+                console.log(`Libro ${i + 1}:`);
+                console.log(`Título: ${libros[i].titulo}`);
+                console.log(`Autor: ${libros[i].autor}`);
+                console.log(`Precio: ${libros[i].precio}`);
+                console.log(`Cantidad: ${libros[i].cantidad}`);
+            }   console.log(`Cantidad de libros actuales: ${libros.length + librosCont}`);
+        }
+
+        function añadirLibro() {
+            let titulo = prompt("Ingrese el título del libro:");
+            let autor = prompt("Ingrese el autor del libro:");
+            let libro = {
+                titulo: titulo,
+                autor: autor,
+                cantidad: 1,
+                precio: 35
+            };
+
+            if (libros.some(l => l.titulo === titulo)) {
+                libros.find(l => l.titulo === titulo).cantidad++;
+                librosCont++;
+            } else {
+                libros.push(libro);
+            }
+            console.log(`Libro introducido: Título: ${libro.titulo}, Autor: ${libro.autor}, Precio: ${libro.precio}`);
+            console.log(`Cantidad de libros actuales: ${libros.length + librosCont}`);
+        }
+
+        function venderLibro() {
+            let titulo = prompt("Ingrese el título del libro:");
+            let libro = libros.find(l => l.titulo === titulo);
+
+            if (libro) {
+                if (libro.cantidad > 0) {
+                    libro.cantidad--;
+                    console.log(`Libro vendido: ${libro.titulo} Precio a cobrar: ${libro.precio}`);
+                    librosCont--;
+                    console.log(`Cantidad actual de libros: ${libros.length + librosCont}`);
+
+                } else {
+                    console.log("No quedan libros para vender.");
+                }
+            } else {
+                console.log("No se encuentra el libro.");
+            }
+        }
+
+        function actualizarLibro() {
+            let titulo = prompt("Ingrese el título del libro:");
+            let libro = libros.find(l => l.titulo === titulo);
+
+            console.log(`Libro encontrado: Título: ${libro.titulo}, Autor: ${libro.autor}, Precio: ${libro.precio}`);
+
+            let nuevoPrecio = prompt("Ingrese el nuevo precio del libro:");
+            if (!nuevoPrecio.isNaN && nuevoPrecio > 0) {
+                libro.precio = nuevoPrecio;
+                console.log(`Libro actualizado correctamente.`);
+            } else {
+                console.log('Precio inválido, libro no actualizado.');
+            }
+            
+        }
+    </script>
+</body>
+</html>

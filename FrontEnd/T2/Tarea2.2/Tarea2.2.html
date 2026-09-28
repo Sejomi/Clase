@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+    <script>
+        // Función para validar que el valor ingresado sea un número.
+        function validarNum(num) {
+            let caracteres = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+            let val;
+            for (let i = 0; i < num.length; i++) {
+                for (let j = 0; j < caracteres.length; j++) {
+                    if (num[i] === caracteres[j]) {
+                        val = true;
+                        break;
+                    } else {
+                        val = false;
+                    }
+                }
+            }
+           return val;
+        }
+        
+        // Función para validar que el valor ingresado sea un operador.
+        function validarOper(num) {
+            let caracteres = ["+", "-", "*", "/"];
+            let val;
+            for (let i = 0; i < num.length; i++) {
+                for (let j = 0; j < caracteres.length; j++) {
+                    if (num[i] === caracteres[j]) {
+                        val = true;
+                        break;
+                    } else {
+                        val = false;
+                    }
+                }
+            }
+           return val;
+        }
+
+        alert("Hola, bienvenido a mi calculadora en JavaScript")
+
+        let val1 = true;
+        let val2 = true;
+        let num1;
+        let num2;
+        let opr;
+        
+        // Prompt para el primer operando.
+        do {
+            if (val2) {
+                num1 = prompt("Introduzca el primero operando. (0-9)")
+                val2 = !val2
+            } else {
+                num1 = prompt("Introduzca un numero valido")
+            }
+            val1 = validarNum(num1)
+        } while (!val1);
+
+        val1 = true;
+        val2 = true;
+
+        // Prompt para el segundo operando.
+        do {
+            if (val2) {
+                num2 = prompt("Introduzca el segundo operando. (0-9)")
+                val2 = !val2
+            } else {
+                num2 = prompt("Introduzca un numero valido")
+            }
+            val1 = validarNum(num2)
+        } while (!val1);
+
+        val1 = true;
+        val2 = true;
+
+        // Prompt para el operador.
+        do {
+            if (val2) {
+                opr = prompt("Introduzca el operador. (+, -, *, /)")
+                val2 = !val2
+            } else {
+                opr = prompt("Introduzca un operador valido")
+            }
+            val1 = validarOper(opr)
+        } while (!val1);
+
+        // Validación para evitar la división entre 0.
+        if (opr === "/" && num2 === "0") {
+            alert("No se puede dividir entre 0")
+            console.log("No se puede dividir entre 0")
+        } else {
+            alert("El resultado de la operacion es: " + eval(num1 + opr + num2))  
+            console.log("El resultado de la operacion es: " + eval(num1 + opr + num2)) 
+        }
+    </script>
+</html>
