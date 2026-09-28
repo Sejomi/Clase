@@ -79,6 +79,8 @@
             if (libros.some(l => l.titulo === titulo)) {
                 libros.find(l => l.titulo === titulo).cantidad++;
                 librosCont++;
+            } else if (titulo == null || autor == null) {
+                console.log("Autor o titulo vacíos, libro no añadido.");
             } else {
                 libros.push(libro);
             }
@@ -110,17 +112,19 @@
         function actualizarLibro() {
             let titulo = prompt("Ingrese el título del libro:");
             let libro = libros.find(l => l.titulo === titulo);
+            if (libro) {
+                console.log(`Libro encontrado: Título: ${libro.titulo}, Autor: ${libro.autor}, Precio: ${libro.precio}`);
+                let nuevoPrecio = prompt("Ingrese el nuevo precio del libro:");
 
-            console.log(`Libro encontrado: Título: ${libro.titulo}, Autor: ${libro.autor}, Precio: ${libro.precio}`);
-
-            let nuevoPrecio = prompt("Ingrese el nuevo precio del libro:");
-            if (!nuevoPrecio.isNaN && nuevoPrecio > 0) {
-                libro.precio = nuevoPrecio;
-                console.log(`Libro actualizado correctamente.`);
+                if (!nuevoPrecio.isNaN && nuevoPrecio > 0) {
+                    libro.precio = nuevoPrecio;
+                    console.log(`Libro actualizado correctamente.`);
+                } else {
+                    console.log('Precio inválido, libro no actualizado.');
+                }
             } else {
-                console.log('Precio inválido, libro no actualizado.');
-            }
-            
+                console.log("Libro no encontrado.");
+            }            
         }
     </script>
 </body>
