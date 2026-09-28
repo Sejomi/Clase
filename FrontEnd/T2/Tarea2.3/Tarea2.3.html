@@ -12,6 +12,7 @@
         let valMenu = false;
         let input = 0;
         
+        //Menú principal
         do {
             let val1 = false;
 
@@ -53,6 +54,7 @@
 
         } while (!valMenu);
 
+        //Funcion para listar los libors que hay.
         function listarLibros() {
             for (let i = 0; i < libros.length; i++) {
                 console.log(`Libro ${i + 1}:`);
@@ -62,7 +64,8 @@
                 console.log(`Cantidad: ${libros[i].cantidad}`);
             }   console.log(`Cantidad de libros actuales: ${libros.length + librosCont}`);
         }
-
+        
+        //Funcion para añadir los libros.
         function añadirLibro() {
             let titulo = prompt("Ingrese el título del libro:");
             let autor = prompt("Ingrese el autor del libro:");
@@ -83,6 +86,7 @@
             console.log(`Cantidad de libros actuales: ${libros.length + librosCont}`);
         }
 
+        //Funcion para vender los libros.
         function venderLibro() {
             let titulo = prompt("Ingrese el título del libro:");
             let libro = libros.find(l => l.titulo === titulo);
@@ -102,6 +106,7 @@
             }
         }
 
+        //Funcion para acutlizar el precio de los libros ya existentes.
         function actualizarLibro() {
             let titulo = prompt("Ingrese el título del libro:");
             let libro = libros.find(l => l.titulo === titulo);
