@@ -53,22 +53,11 @@
             static $normal = 0;
             if (strtolower($categoria) == "urgente") {
                 $urgente++;
-                if ($urgente < 10) {
-                    echo strtoupper($categoria) . "-00" . $urgente;
-                } else if ($urgente < 100) {
-                    echo strtoupper($categoria) . "-0" . $urgente;
-                } else {
-                    echo strtoupper($categoria) . "-" . $urgente;
-                }
+                echo sprintf(strtoupper($categoria) . "-" . "%03d", $urgente);
+                
             } else {
                 $normal++;
-                if ($normal < 10) {
-                    echo strtoupper($categoria) . "-00" . $normal;
-                } else if ($normal < 100) {
-                    echo strtoupper($categoria) . "-0" . $normal;
-                } else {
-                    echo strtoupper($categoria) . "-" . $normal;
-                }
+                echo sprintf(strtoupper($categoria) . "-" . "%03d", $normal);
             }
         }
     ?>
