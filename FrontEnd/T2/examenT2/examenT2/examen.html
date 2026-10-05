@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <script>
+console.log("Bienvenida/o a tu primera clase de matemáticas. ¡Vamos a empezar con los tablas de multiplicar!");
+
+let val1 = true;
+var input = 0;
+var input2 = "";
+
+//Funcion para imprimir la tabla de multiplicar
+function tablaMultiplicar (num) {
+    console.log(`La tabla del ${num} es:`);
+    for (let i = 0; i < 11 ; i++) {
+        console.log(`${num} x ${i} = ${num * i}`);
+    }
+}
+
+//Bucle programa principal
+do {
+    //Bucle validacion entrada
+    do {
+        if(val1) {
+            input = prompt("Introduce el número del que quieres su tabla");
+            val1 = false;
+        }
+        else { 
+            input = prompt("Introduce un número correcto (0-10)");
+        }
+    } while (input !== 0 && input !== 1 && input !== 2 && input !== 3 && input !== 4 && input !== 5 && input !== 6 && input !== 7 && input !== 8 && input !== 9 && input !== 10);
+    
+    val1 = true;
+    tablaMultiplicar(input);
+
+    input2 = prompt("Quieres realizar otra tabla(t) o salir(s)")
+
+} while (input2 == "t");
+
+console.log("Gracias por usar este programa, hasta pronto.");
+
+        </script>
+    </head>
+</html>
