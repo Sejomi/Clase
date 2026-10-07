@@ -1,11 +1,16 @@
-import * as Producto from './Producto.js';
+import {Producto} from './Producto.js';
 
-class Papelería extends Producto{
-    constructor(nombre, tipo, codigo, precio, cantidad) {
-        super(codigo, precio, cantidad);
+export class Papeleria extends Producto {
+    // Constructor de la clase Papeleria
+    constructor(nombre, tipo) {
+        super();
         this.nombre = nombre;
         this.tipo = tipo;
     }
-    listar() {
+    // Método para listar los atributos de la papelería
+    listar(papelería) {
+        super.listar(papelería);
+        console.log(`Nombre: ${papelería.nombre}`);
+        console.log(`Tipo: ${papelería.tipo}`);
     }
 }

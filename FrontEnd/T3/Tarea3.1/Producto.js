@@ -1,9 +1,17 @@
-class Producto {
-    constructor(codigo, precio, cantidad) {
-        this.codigo = codigo;
-        this.precio = precio;
-        this.cantidad = cantidad;
+export class Producto {
+    static contador = 0;
+    // Constructor de la clase Producto
+    constructor() {
+        Producto.contador++;
+        this.codigo = Producto.contador;
+        this.precio = 35;
+        this.cantidad = 1;
     }
-    listar() {
+
+    // Método para listar los atributos del producto
+    listar(producto) {
+        console.log(`Código: ${producto.codigo}`);
+        console.log(`Precio: ${producto.precio}`);
+        console.log(`Cantidad: ${producto.cantidad}`);
     }
 }
