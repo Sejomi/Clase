@@ -6,7 +6,7 @@ $datos = [
     'D' => ["nombre" => "Premium", "precio" => 29.99, "gb" => 100]
 ];
 
-$plan = 'A';
+$plan = 'H';
 print_r(obtenerPlan($plan));
 
 function obtenerPlan(string $codigo) : array {
