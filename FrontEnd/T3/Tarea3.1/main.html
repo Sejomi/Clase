@@ -6,8 +6,8 @@
 </head>
 <body>
     <script type="module">
-        import * as Papeleria from './Papeleria.js';
-        import * as Libro from './Libro.js';
+        import {Papeleria} from './Papeleria.js';
+        import {Libro} from './Libro.js';
 
         let libros = [];
         let librosCont = 0;
@@ -56,37 +56,40 @@
 
         } while (!valMenu);
 
-        //Funcion para listar los libors que hay.
+        //Funcion para listar los libros que hay.
         function listarLibros() {
             for (let i = 0; i < libros.length; i++) {
-                console.log(`Libro ${i + 1}:`);
-                console.log(`Título: ${libros[i].titulo}`);
-                console.log(`Autor: ${libros[i].autor}`);
-                console.log(`Precio: ${libros[i].precio}`);
-                console.log(`Cantidad: ${libros[i].cantidad}`);
-            }   console.log(`Cantidad de libros actuales: ${libros.length + librosCont}`);
+                libros[i].listar(libros[i]);
+            }   
+            console.log(`Cantidad de libros actuales: ${libros.length + librosCont}`);
+            console.log(`Cantidad de titulos actuales: ${libros.length}`);
         }
         
         //Funcion para añadir los libros.
         function añadirLibro() {
             let titulo = prompt("Ingrese el título del libro:");
             let autor = prompt("Ingrese el autor del libro:");
-            let libro = {
-                titulo: titulo,
-                autor: autor,
-                cantidad: 1,
-                precio: 35
-            };
-
-            if (libros.some(l => l.titulo === titulo)) {
-                libros.find(l => l.titulo === titulo).cantidad++;
-                librosCont++;
-            } else if (titulo == null || autor == null) {
-                console.log("Autor o titulo vacíos, libro no añadido.");
-            } else {
-                libros.push(libro);
+            
+            if (!titulo || !autor) {
+                console.log("Autor o título vacíos, libro no añadido.");
+                return;
             }
-            console.log(`Libro introducido: Título: ${libro.titulo}, Autor: ${libro.autor}, Precio: ${libro.precio}`);
+
+            let libroExistente = libros.find(l => l.titulo === titulo);
+
+            if (libroExistente) {
+                libroExistente.cantidad++;
+                librosCont++;
+                console.log(`Se incrementó la cantidad de: ${libroExistente.titulo}`);
+            } else {
+                let libro = new Libro(titulo, autor);
+                libros.push(libro);
+
+                console.log(`Libro introducido`);
+                console.log(`Título: ${libro.titulo}`);
+                console.log(`Autor: ${libro.autor}`);
+            }
+
             console.log(`Cantidad de libros actuales: ${libros.length + librosCont}`);
         }
 
@@ -114,6 +117,7 @@
         function actualizarLibro() {
             let titulo = prompt("Ingrese el título del libro:");
             let libro = libros.find(l => l.titulo === titulo);
+            
             if (libro) {
                 console.log(`Libro encontrado: Título: ${libro.titulo}, Autor: ${libro.autor}, Precio: ${libro.precio}`);
                 let nuevoPrecio = prompt("Ingrese el nuevo precio del libro:");
