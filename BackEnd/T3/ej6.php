@@ -16,12 +16,14 @@ $almacenesActualizados = array_map(function ($c) {
     return array_map(function ($p) {
         $p["precio"] *= 1.1;
         return $p;
-        }, $c)
+        }, $c);
     }, $almacenes);
 
 // b) $stockBajo: solo productos con stock <= 2, manteniendo estructura por almacén
 //    Usa array_map + array_filter
-$stockBajo = // Tu código aquí
+$stockBajo = array_map(function ($c) {
+    return array_filter($c ,fn($p) => $p["stock"] <= 2);
+    }, $almacenes);
 
 print_r($almacenesActualizados);
 print_r($stockBajo);
