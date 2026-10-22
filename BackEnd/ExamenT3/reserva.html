@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <style>
+            body {
+                display: flex;
+                flex-direction: column;
+            }
+        </style>
+    </head>
+    <body>
+    <!-- Se usa el post porque enviamos datos al servidor para que los procese y es necesario el enctype porque esta la opcion de añadir un archivo. --> 
+        <form action="procesar_reserva.php" method="post" enctype="multipart/form-data">
+            <label for="nombre">Nombre del cliente: </label>
+            <input type="text" name="nombre" required><br><br>
+            
+            <label for="email">Email: </label>
+            <input type="email" name="email" required><br><br>
+
+            <label for="pista">Pista: </label>
+            <select name="pista" required>
+                <option value="" disabled selected>Seleccione una pista</option>
+                <option value="PA01">Pista - PA01</option>
+                <option value="PA02">Pista - PA02</option>
+                <option value="TE01">Pista - TE01</option>
+                <option value="FS01">Pista - FS01</option>
+                <option value="TE02">Pista - TE02</option>
+            </select><br><br>
+            
+            <label for="fecha">Fecha: </label>
+            <input type="date" name="fecha" required><br><br>
+
+            <label for="hora">Hora de inicio: </label>
+            <input type="text" name="hora" required><br><br>
+
+            <label for="comprobante">Comprobante de pago: </label>
+            <input type="file" name="comprobante"><br><br>
+
+            <button type="submit">Reservar</button>
+    </body>
+</html>

@@ -46,6 +46,10 @@ a {
   text-decoration: none;
   color: white;
 }
+#mail_footer {
+  font-size: medium;
+  font-family: 'Open Sans', sans-serif;
+}
 a:visited {
   color: white;
   text-decoration: none;
@@ -119,4 +123,85 @@ footer {
 .div_txt_final {
   grid-column: 3;
   grid-row: 3;
+}
+.main_bosses {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+#fume_knight {
+  width: 600px;
+  height: auto;
+}
+#fume_knight_source {
+  width: 600px;
+  height: auto;
+}
+#sir_alonne {
+  width: 600px;
+  height: auto;
+}
+.main_contenido {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.main_contenido_curiosidades {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: 1500px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: rgb(48, 48, 48);
+  box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.4);
+}
+caption {
+  font-family: 'Cinzel', sans-serif;
+  font-size: large;
+  padding: 10px;
+  caption-side: top;
+}
+th, td {
+  padding: 10px;
+  border-color: rgb(110, 110, 110);
+}
+thead th {
+  background-color: rgb(30, 30, 30);
+  font-family: 'Cinzel', sans-serif;
+}
+tbody th {
+  background-color: rgb(37, 37, 37);
+  font-family: 'Cinzel', sans-serif;
+}
+tbody td {
+  font-family: 'Open Sans', sans-serif;
+  text-align: left;
+}
+tfoot th, tfoot td {
+  background-color: rgb(30, 30, 30);
+  color: rgb(200, 200, 200);
+}
+ul, ol {
+  padding-left: 35px;
+  line-height: 1.7;
+}
+li ul, li ol {
+  margin-top: 5px;
+}
+dl dt {
+  font-family: 'Cinzel', sans-serif;
+  font-weight: 700;
+  margin-top: 15px;
+  color: #fff4df;
+}
+dl dd {
+  margin-left: 30px;
+  text-align: justify;
+  line-height: 1.6;
 }
