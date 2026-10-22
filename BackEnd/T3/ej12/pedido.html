@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Pedido</title>
+</head>
+<body>
+
+    <h2>Formulario de Pedido</h2>
+
+    <form action="procesar_pedido.php" method="POST">
+        <div>
+            <label for="nombre">Nombre del cliente:</label><br>
+            <input type="text" id="nombre" name="nombre" required minlength="2">
+        </div>
+        <br>
+        <div>
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <br>
+        <div>
+            <label for="referencia">Referencia del producto:</label><br>
+            <select id="referencia" name="referencia" required>
+                <option value="" disabled selected>-- Seleccione un producto --</option>
+                <option value="P001">P001 - Producto 1</option>
+                <option value="P002">P002 - Producto 2</option>
+                <option value="P003">P003 - Producto 3</option>
+                <option value="P004">P004 - Producto 4</option>
+                <option value="P005">P005 - Producto 5</option>
+                <option value="P006">P006 - Producto 6</option>
+            </select>
+        </div>
+        <br>
+        <div>
+            <label for="cantidad">Cantidad:</label><br>
+            <input type="number" id="cantidad" name="cantidad" required min="1" max="10">
+        </div>
+        <br>
+        <div>
+            <label for="descuento">Código de descuento:</label><br>
+            <input type="text" id="descuento" name="descuento">
+        </div>
+        <br>
+        <button type="submit">Enviar Pedido</button>
+    </form>
+
+</body>
+</html>
