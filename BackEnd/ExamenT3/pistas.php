@@ -39,5 +39,5 @@ function aplicarDescuento (array $pistas, float $porcentaje): array {
 print_r(pistasDisponibles($pistas));
 print_r(pistasPorTipo($pistas, 'padel'));
 echo(clasificarPrecio(10));
-print_r($pistas, 67);
+print_r(aplicarDescuento($pistas, 67));
 ?>
