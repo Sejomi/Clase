@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Tarea 2.3</title>
+</head>
+<body>
+    <script type="module">
+        import {Libro} from './Libro.js';
+        import {Cliente} from './Cliente.js';
+        import {Trabajador} from './Trabajador.js';
+        import {MetodoPago} from './MetodoPago.js';
+
+        // Controlador (variables y arrays)
+        let libros = [];
+        let usuarios = [];
+        let input = 0;
+
+        // Menú principal
+        do {
+            console.log("Hola, bienvenido a nuestra librería. ¿Qué desea hacer?");
+            console.log("1.- Listar libros");
+            console.log("2.- Añadir libro");
+            console.log("3.- Vender libro");
+            console.log("4.- Actualizar libro");
+            console.log("5.- Añadir usuario");
+            console.log("6.- Modificar usuario");
+            console.log("7.- Eliminar usuario");
+            console.log("8.- Listar usuarios");
+            console.log("0.- Finalizar");
+
+            input = parseInt(prompt("Elija una opción (0-8):"));
+
+            if (isNaN(input) || input < 0 || input > 8) {
+                console.log("Por favor, ingrese una opción válida.");
+                continue;
+            }
+
+            switch (input) {
+                case 1: listarLibros(); break;
+                case 2: añadirLibro(); break;
+                case 3: venderLibro(); break;
+                case 4: actualizarLibro(); break;
+                case 5: añadirUsuario(); break;
+                case 6: modificarUsuario(); break;
+                case 7: eliminarUsuario(); break;
+                case 8: listarUsuarios(); break;
+                case 0: console.log("Finalizando programa..."); break;
+            }
+        } while (input !== 0);
+
+        // Leer texto (si cancelan devuelve vacío)
+        function leer(mensaje) {
+            let valor = prompt(mensaje);
+            if (valor === null) {
+                return "";
+            }
+            return valor.trim();
+        }
+
+        // Pedir un dato hasta que sea válido
+        // Si se pasa "actual", dejar vacío mantiene el valor anterior
+        function pedirDato(mensaje, validar, actual) {
+            let valor;
+            let valido = false;
+            do {
+                valor = leer(mensaje);
+                if (valor === "" && actual !== undefined) {
+                    return actual;
+                }
+                valido = validar(valor);
+                if (!valido) {
+                    console.log("Dato no válido, inténtelo de nuevo.");
+                }
+            } while (!valido);
+            return valor;
+        }
+
+        // Validaciones
+        function noVacio(v) { return v !== ""; }
+        function validarPass(v) { return v.length >= 4; }
+        function validarEmail(v) { return v.includes("@") && v.includes("."); }
+        function validarTelefono(v) { return v.length === 9 && !isNaN(v); }
+        function validarId(v) { return v !== "" && !isNaN(v) && parseInt(v) > 0; }
+        function validarSiNo(v) { return v.toLowerCase() === "s" || v.toLowerCase() === "n"; }
+        function validarFecha(v) { return v.length === 10 && !isNaN(new Date(v).getTime()); }
+        function validarDni(v) {
+            // 8 números + 1 letra
+            let numeros = v.substring(0, 8);
+            let letra = v.charAt(8).toUpperCase();
+            return v.length === 9 && !isNaN(numeros) && letra >= "A" && letra <= "Z";
+        }
+
+        // Buscar usuario por nickname
+        function buscarUsuario(nick) {
+            return usuarios.find(u => u.usuario === nick);
+        }
+
+        // Pedir método de pago (devuelve null si no se quiere añadir)
+        function pedirMetodoPago() {
+            let tipo = leer("Tipo de método de pago (vacío para no añadir):");
+            if (tipo === "") {
+                return null;
+            }
+            let identificador = pedirDato("Identificador del método de pago:", noVacio);
+            return new MetodoPago(tipo, identificador);
+        }
+
+        // LIBROS
+
+        // Listar libros
+        function listarLibros() {
+            let total = 0;
+            for (let i = 0; i < libros.length; i++) {
+                libros[i].listar();
+                total += libros[i].cantidad;
+            }
+            console.log(`Cantidad de libros actuales: ${total}`);
+            console.log(`Cantidad de titulos actuales: ${libros.length}`);
+        }
+
+        // Total de libros (suma de cantidades)
+        function totalLibros() {
+            let total = 0;
+            for (let i = 0; i < libros.length; i++) {
+                total += libros[i].cantidad;
+            }
+            return total;
+        }
+
+        // Añadir libro
+        function añadirLibro() {
+            let titulo = leer("Ingrese el título del libro:");
+            let autor = leer("Ingrese el autor del libro:");
+
+            if (titulo === "" || autor === "") {
+                console.log("Autor o título vacíos, libro no añadido.");
+                return;
+            }
+
+            let libroExistente = libros.find(l => l.titulo === titulo);
+
+            if (libroExistente) {
+                libroExistente.cantidad++;
+                console.log(`Se incrementó la cantidad de: ${libroExistente.titulo}`);
+            } else {
+                let libro = new Libro(titulo, autor);
+                libros.push(libro);
+                console.log("Libro introducido");
+                console.log(`Título: ${libro.titulo}`);
+                console.log(`Autor: ${libro.autor}`);
+            }
+            console.log(`Cantidad de libros actuales: ${totalLibros()}`);
+        }
+
+        // Vender libro
+        function venderLibro() {
+            let titulo = leer("Ingrese el título del libro:");
+            let libro = libros.find(l => l.titulo === titulo);
+
+            if (!libro) {
+                console.log("No se encuentra el libro.");
+                return;
+            }
+            if (libro.vender()) {
+                console.log(`Libro vendido: ${libro.titulo} Precio a cobrar: ${libro.precio}`);
+                console.log(`Cantidad actual de libros: ${totalLibros()}`);
+            } else {
+                console.log("No quedan libros para vender.");
+            }
+        }
+
+        // Actualizar precio del libro
+        function actualizarLibro() {
+            let titulo = leer("Ingrese el título del libro:");
+            let libro = libros.find(l => l.titulo === titulo);
+
+            if (!libro) {
+                console.log("Libro no encontrado.");
+                return;
+            }
+            console.log(`Libro encontrado: Título: ${libro.titulo}, Autor: ${libro.autor}, Precio: ${libro.precio}`);
+            let nuevoPrecio = parseFloat(leer("Ingrese el nuevo precio del libro:"));
+
+            if (libro.modificar(nuevoPrecio)) {
+                console.log("Libro actualizado correctamente.");
+            } else {
+                console.log("Precio inválido, libro no actualizado.");
+            }
+        }
+
+        //  USUARIOS
+
+        // 5. Añadir usuario
+        function añadirUsuario() {
+            let nick = leer("Ingrese el usuario:");
+            if (nick === "") {
+                console.log("Usuario vacío, no añadido.");
+                return;
+            }
+            if (buscarUsuario(nick)) {
+                console.log("El usuario ya existe.");
+                return;
+            }
+
+            // Datos comunes
+            let pass = pedirDato("Contraseña (mínimo 4 caracteres):", validarPass);
+            let nombre = pedirDato("Nombre:", noVacio);
+            let apellidos = pedirDato("Apellidos:", noVacio);
+            let dni = pedirDato("DNI (8 números y letra):", validarDni);
+            let email = pedirDato("Email:", validarEmail);
+            let telefono = pedirDato("Teléfono (9 dígitos):", validarTelefono);
+
+            // Tipo de usuario
+            let tipo = pedirDato("¿Tipo de usuario? (c = cliente, t = trabajador):", function (v) {
+                return v.toLowerCase() === "c" || v.toLowerCase() === "t";
+            });
+
+            let nuevo;
+            if (tipo.toLowerCase() === "c") {
+                let fecha = pedirDato("Fecha de nacimiento (aaaa-mm-dd):", validarFecha);
+                let domicilio = pedirDato("Domicilio:", noVacio);
+                nuevo = new Cliente(nick, pass, nombre, apellidos, dni, email, telefono, new Date(fecha), domicilio);
+                nuevo.anyadirMetodoPago(pedirMetodoPago());
+            } else {
+                let admin = pedirDato("¿Es administrador? (s/n):", validarSiNo);
+                let id = pedirDato("ID de trabajador:", validarId);
+                nuevo = new Trabajador(nick, pass, nombre, apellidos, dni, email, telefono, admin.toLowerCase() === "s", parseInt(id));
+            }
+
+            usuarios.push(nuevo);
+            console.log("Usuario introducido:");
+            nuevo.listar();
+            console.log(`Cantidad total de usuarios: ${usuarios.length}`);
+        }
+
+        // 6. Modificar usuario
+        function modificarUsuario() {
+            let nick = leer("Ingrese el usuario a modificar:");
+            let u = buscarUsuario(nick);
+
+            if (!u) {
+                console.log("No se encuentra el usuario");
+                return;
+            }
+            console.log("Deje vacío para mantener el valor actual.");
+
+            // Datos comunes
+            let pass = pedirDato("Contraseña (actual: " + u.pass + "):", validarPass, u.pass);
+            u.cambiarPass(pass);
+            u.nombre = pedirDato("Nombre (actual: " + u.nombre + "):", noVacio, u.nombre);
+            u.apellidos = pedirDato("Apellidos (actual: " + u.apellidos + "):", noVacio, u.apellidos);
+            u.dni = pedirDato("DNI (actual: " + u.dni + "):", validarDni, u.dni);
+            u.email = pedirDato("Email (actual: " + u.email + "):", validarEmail, u.email);
+            u.telefono = pedirDato("Teléfono (actual: " + u.telefono + "):", validarTelefono, u.telefono);
+
+            // Datos según tipo
+            if (u instanceof Cliente) {
+                let fechaActual = u.fechnac.toISOString().substring(0, 10);
+                let fecha = pedirDato("Fecha de nacimiento (actual: " + fechaActual + "):", validarFecha, fechaActual);
+                u.fechnac = new Date(fecha);
+                u.domicilio = pedirDato("Domicilio (actual: " + u.domicilio + "):", noVacio, u.domicilio);
+
+                if (u.metodopago !== null) {
+                    let m = u.metodopago;
+                    m.tipo = pedirDato("Tipo de pago (actual: " + m.tipo + "):", noVacio, m.tipo);
+                    m.identificador = pedirDato("Identificador (actual: " + m.identificador + "):", noVacio, m.identificador);
+                } else {
+                    u.anyadirMetodoPago(pedirMetodoPago());
+                }
+            } else {
+                let actualAdmin = u.admin ? "s" : "n";
+                let admin = pedirDato("¿Administrador? s/n (actual: " + actualAdmin + "):", validarSiNo, actualAdmin);
+                u.admin = admin.toLowerCase() === "s";
+                let id = pedirDato("ID (actual: " + u.id + "):", validarId, String(u.id));
+                u.id = parseInt(id);
+            }
+
+            console.log("Usuario modificado:");
+            u.listar();
+        }
+
+        // 7. Eliminar usuario
+        function eliminarUsuario() {
+            if (usuarios.length === 0) {
+                console.log("No quedan usuarios");
+                return;
+            }
+            let nick = leer("Ingrese el usuario a eliminar:");
+            let posicion = usuarios.findIndex(u => u.usuario === nick);
+
+            if (posicion === -1) {
+                console.log("No se encuentra el usuario");
+                return;
+            }
+            usuarios.splice(posicion, 1);
+            console.log(`Usuario eliminado: ${nick}`);
+            console.log(`Cantidad actual de usuarios: ${usuarios.length}`);
+        }
+
+        // 8. Listar usuarios
+        function listarUsuarios() {
+            for (let i = 0; i < usuarios.length; i++) {
+                usuarios[i].listar();
+                console.log("-----");
+            }
+            console.log(`Cantidad de usuarios actuales: ${usuarios.length}`);
+        }
+    </script>
+</body>
+</html>
