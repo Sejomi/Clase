@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="module">
+        import {Videojuego} from './Videojuego.js';
+        import {Critico} from "./Critico.js";
+        import {Streamer} from "./Streamer.js";
+
+        try {
+            let Valorant = new Videojuego("Valorant", "Riot Games", "FPS");
+            let Alberto = new Critico("Alberto", "Xataka", "España");
+
+            Alberto.votar(Valorant)
+            Alberto.listar();
+            Valorant.listar();
+        }
+        catch (e) {
+            console.log(e);
+        }
+        
+    </script>
+</head>
+<body>
+</body>
+</html>

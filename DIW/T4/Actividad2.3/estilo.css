@@ -3,8 +3,29 @@
    Sigue el enunciado. Escribe cada parte debajo de su cabecera. */
 
 /* PARTE 1 · Base, herencia y cascada */
-
-
+* {
+   margin: 0;
+   padding: 0;
+}
+body {
+   font-family: 'Playfair Display', 'Franklin Gothic Medium', 'Arial Narrow', sans-serif;
+   font-size: 13pt;
+   line-height: 20pt;
+   color: darkslategrey;
+}
+h1, h2, h3 {
+   font-family: 'Playfair Display', serif;
+}
+h1 {
+   color: rgb(0, 162, 255, 0.8);
+   font-size: 36pt;
+   font-variant: small-caps;
+   letter-spacing: 2px;
+   text-shadow: ;
+}
+h2 {
+   color: #97EFF2;
+}
 /* PARTE 2 · Tipografía */
 
 
