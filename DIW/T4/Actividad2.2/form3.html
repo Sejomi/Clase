@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form3</title>
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        label {
+            margin-top: 10px;
+        }
+        input, select, button {
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+<form class="f3" action="#" method="post">
+  <h3>Nuestra plataforma de pago</h3>
+
+  <label for="tarjeta">Credit card number</label>
+  <input type="text" id="tarjeta" name="tarjeta" inputmode="numeric" maxlength="16"
+         pattern="[0-9]{16}" title="16 dígitos" required>
+
+  <label>Expiration (MM/YY)</label>
+  <p style="margin:0 0 12px">
+    <select name="mes" aria-label="Mes" required>
+      <option value="">MM</option>
+      <option>01</option><option>02</option><option>03</option><option>04</option>
+      <option>05</option><option>06</option><option>07</option><option>08</option>
+      <option>09</option><option>10</option><option>11</option><option>12</option>
+    </select>
+    /
+    <select name="anio" aria-label="Año" required>
+      <option value="">YY</option>
+      <option>26</option><option>27</option><option>28</option><option>29</option>
+      <option>30</option><option>31</option><option>32</option>
+    </select>
+  </p>
+
+  <label for="cvv">CVV</label>
+  <input type="text" id="cvv" name="cvv" inputmode="numeric" maxlength="4"
+         pattern="[0-9]{3,4}" title="3 o 4 dígitos" required>
+
+  <button type="submit">Enviar</button>
+</form>
+</body>
+</html>

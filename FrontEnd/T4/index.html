@@ -16,18 +16,29 @@
         }
     </style>
 </head>
+<template id="templateVideojuego">
+        <div class="videojuego">
+            <h2 class="titulo"></h2>
+            <p class="precio"></p>
+            <p class="desarrolladora"></p>
+            <img class="imagen" src="" alt="">
+        </div>
+    </template>
 <body>
-    <script src='./main.js'></script>
-    
-    <form id="formDesarrolladora">
-        <h1>Desarroladora</h1><br>
+    <form id="formVideojuego">
+        <h1>Videojuegos</h1><br>
         <label for="id">Introduza el id: </label>
-        <input type="text" name="id" id="id"><br><br>
-        <label for="nombre">Introduzca el nombre: </label>
-        <input type="text" name="nombre" id="nombre"><br><br>
-        <label for="pais">Introduzca el país: </label>
-        <input type="text" name="pais" id="pais"><br><br>
+        <input type="text" name="id" id="id" placeholder="Introduzca el id"><br><br>
+        <label for="titulo">Introduzca el título: </label>
+        <input type="text" name="titulo" id="titulo" placeholder="Introduzca el título"><br><br>
+        <label for="precio">Introduzca el precio: </label>
+        <input type="number" name="precio" id="precio" step="0.01" min="0" placeholder="Introduzca el precio"><br><br>
+        <label for="desarrolladora">Introduzca la desarrolladora: </label>
+        <input type="text" name="desarrolladora" id="desarrolladora" placeholder="Introduzca la desarrolladora"><br><br>
+        <label for="imagen">Introduzca la URL de la imagen: </label>
+        <input type="text" name="imagen" id="imagen" placeholder="Introduzca la URL de la imagen"><br><br>
         <button type="submit">Enviar.</button>
     </form>
 </body>
+<script src='./main.js'></script>
 </html>

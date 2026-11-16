@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <form action="process.php" method="POST">
+        <label for="idioma">Seleccione el idioma:</label>
+        <select name="idioma" id="idioma">
+            <option value="es">Español</option>
+            <option value="en">Inglés</option>
+        </select><br><br>
+        <label for="fontSize">Seleccione el tamaño de fuente:</label>
+        <select name="fontSize" id="fontSize">
+            <option value="medium">Normal</option>
+            <option value="large">Grande</option>
+        </select><br><br>
+        <input type="submit" value="Submit">
+</body>
+</html>

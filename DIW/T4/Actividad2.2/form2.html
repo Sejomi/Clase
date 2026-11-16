@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form2</title>
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        label {
+            margin-top: 10px;
+        }
+        input, select, button {
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+<form class="f2" action="#" method="post">
+  <h3>Dirección de envío</h3>
+
+  <label for="nombre2">Nombre *</label>
+  <input type="text" id="nombre2" name="nombre" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñÜü ]+"
+         title="Sólo letras y espacios" required>
+
+  <label for="apellidos">Apellidos *</label>
+  <input type="text" id="apellidos" name="apellidos" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñÜü ]+"
+         title="Sólo letras y espacios" required>
+
+  <label for="direccion">Dirección *</label>
+  <input type="text" id="direccion" name="direccion" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñÜü0-9, ]+"
+         title="Letras, espacios, números y comas" required>
+
+  <label for="nif">Número de identificación fiscal *</label>
+  <input type="text" id="nif" name="nif" placeholder="DNI/NIF"
+         pattern="([0-9]{8}[A-Za-z])|([XYZxyz][0-9]{7}[A-Za-z])"
+         title="DNI (8 números y una letra) o NIE (X, Y o Z, 7 números y una letra)" required>
+
+  <label for="cp">Código postal * formatos: (01-52)XXX</label>
+  <input type="text" id="cp" name="cp" maxlength="5"
+         pattern="(0[1-9]|[1-4][0-9]|5[0-2])[0-9]{3}"
+         title="5 dígitos; los dos primeros entre 01 y 52" required>
+
+  <label for="telefono">Teléfono *</label>
+  <input type="tel" id="telefono" name="telefono"
+         pattern="(\+34|0034|34)?[67][0-9]{8}"
+         title="Opcionalmente +34, 0034 o 34, seguido de 9 dígitos que empiecen por 6 o 7" required>
+
+  <label for="pais">País *</label>
+  <select id="pais" name="pais" required>
+    <option value="España" selected>España</option>
+    <option value="Portugal">Portugal</option>
+    <option value="Francia">Francia</option>
+    <option value="Italia">Italia</option>
+    <option value="Alemania">Alemania</option>
+  </select>
+
+  <label for="provincia">Provincia *</label>
+  <input type="text" id="provincia" name="provincia" list="provincias"
+         pattern="[A-Za-zÁÉÍÓÚáéíóúÑñÜü ]+" title="Sólo letras y espacios" required>
+  <datalist id="provincias">
+    <option value="Alicante"></option>
+    <option value="Valencia"></option>
+    <option value="Castellón"></option>
+    <option value="Murcia"></option>
+    <option value="Madrid"></option>
+  </datalist>
+
+  <label for="info">Información adicional</label>
+  <textarea id="info" name="info"></textarea>
+
+  <button type="submit">Enviar</button>
+</form>
+
+</body>
+</html>
